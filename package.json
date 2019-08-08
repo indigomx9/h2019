@@ -1,0 +1,31 @@
+{
+  "name": "h2019",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "nodemon --exec ts-node src/index.ts",
+    "pro": "tsc && node dist/index.js",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/graphql": "^14.2.3",
+    "@types/mongoose": "^5.5.12",
+    "@types/node": "^12.7.1",
+    "@types/uuid": "^3.4.5",
+    "apollo-server-express": "^2.8.1",
+    "express": "^4.17.1",
+    "graphql": "^14.4.2",
+    "mongoose": "^5.6.9",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
+  }
+}
