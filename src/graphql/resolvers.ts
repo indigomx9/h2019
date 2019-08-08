@@ -28,7 +28,14 @@ import { UserInputError } from "apollo-server-express";
 export const resolvers = {
     Query: {
         personCount: () => persons.length,
-        allPersons: () => persons,
+        allPersons: (obj, args) => {
+            if (!args.phone) {
+                return persons;
+            }
+            const byPhone = (person) => 
+                args.phone === "YES" ? person.phone : !person.phone
+            return persons.filter(byPhone);
+        },
         findPerson: (obj, args) => 
             persons.find(persons => persons.name === args.name)
     },
@@ -53,6 +60,20 @@ export const resolvers = {
             const person = { ...args, id: uuid() }
             persons = persons.concat(person);
             return person;
+        },
+
+        editNumber: (obj, args) => {
+            const person = persons.find(
+                (persons) => persons.name === args.name);
+            if (!person) {
+                return null;
+            }
+
+            const updatedPerson = { ...person, phone: args.phone }
+            persons = persons.map(
+                (persons) => persons.name === args.name ? 
+                    updatedPerson : person);
+            return updatedPerson;
         },
     }
 };
