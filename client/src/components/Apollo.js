@@ -12,6 +12,7 @@ const ALL_PERSONS = gql`
         }
     }
 `;
+
 export const Apollo = () => {
     return (
         <Query query={ALL_PERSONS}>
