@@ -16,7 +16,7 @@ export const typeDefs = gql`
     enum YesNo {
         YES
         NO
-    }
+    }    
 
     type Query {
         personCount: Int!
@@ -32,9 +32,12 @@ export const typeDefs = gql`
             city: String!
         ): Person
         
-        editNumber(
+        editPerson(
+            id: ID!
             name: String!
             phone: String!
+            street: String!
+            city: String!
         ): Person
     }
 `;
